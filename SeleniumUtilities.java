@@ -1,40 +1,43 @@
 package seleniumDemo;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * SeleniumDriverUtilities contains common and general purpose methods. Other classes inherit from this class. 
- * @author mikej
+ * Base class of frequently used general purpose methods that other classes inherit from.
+ * 
+ * @author Michael Januszewski
  */
 public class SeleniumUtilities {
-	private static final Logger log = LogManager.getLogger(SeleniumUtilities.class);
-	WebDriver driver;  // MJJ- private??? - NO!!!!
+	private static final Logger log = LogManager.getLogger(SeleniumUtilities.class.getName());  // Log4j2
+
+	// Instance variables
+	public WebDriver driver;
 
 
 	/**
-	 *  SeleniumDriverUtilities constructor
-	 *  
+	 * Constructor for the Review Your Trip page class.  It calls the base class constructor (SeleniumUtilities).
+	 * 
+	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public SeleniumUtilities(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	
-	// OVERLOADING getElement
-	
 	/**
-	 * Find a Selenium element using a locator 
-	 * @return WebElement
+	 * Find a Selenium web element using any type of locator.
+	 * 
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @return 				the WebElement found 
+	 * @throws	Exception	let startHere() method catch it
 	 */
 	public WebElement getElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -55,69 +58,20 @@ public class SeleniumUtilities {
 			element = driver.findElement(By.partialLinkText(locator));
 		else if (locatorType.equals("TAG"))
 			element = driver.findElement(By.tagName(locator));
-		
+
 		return element;
 	}
 
 	/**
-	 * Find a Selenium element using either xpath or id locators by concatenating  
-	 * the first part of an xpath with an index into a tag array and then with the second part
-	 * of the xpath.
-	 * @return WebElement
-	 */
-	public WebElement getElement(String str1, int i, String str2, String locatorType) throws Exception {
-		WebElement element = null;
-		String locator = str1 + i + str2;
-	
-		element = getElement(locator, locatorType);
-		
-/*		
-		if (locatorType.equals("ID"))
-			element = driver.findElement(By.id(locator));
-		else if (locatorType.equals("XPATH"))
-			element = driver.findElement(By.xpath(locator));
-		// other locators to be added later
-*/
-		return element;
-	}
-	
-	/**
-	 * Find a Selenium element using either xpath or id locators by concatenating  
-	 * the first part of an xpath with an index into a tag array, then with the middle part
-	 * of the xpath, then with another index into a tag array and finally with the last part
-	 * of the xpath.
-	 * @return WebElement
-	 */
-	public WebElement getElement(String str1, int i, String str2, int j, String str3, String locatorType) throws Exception {
-		WebElement element = null;
-		String locator = str1 + i + str2 + j + str3;
-		
-		element = getElement(locator, locatorType);
-/*	
-		if (locatorType.equals("ID"))
-			element = driver.findElement(By.id(locator));
-		else if (locatorType.equals("XPATH"))
-			element = driver.findElement(By.xpath(locator));
-		// other locators to be added later
-*/
-		return element;
-	}
-	
-	// OVERLOADING getElements
-	
-	/**
-	 * Find a List of Selenium elements using either xpath or id locators 
-	 * @return List <WebElement>
+	 * Find a List of Selenium web elements (plural!) using any type of locator.
+	 * 
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @return 				the List of WebElements (plural!) found
 	 */
 	public List <WebElement> getElements(String locator, String locatorType) {
 		List <WebElement> elements = null;
-/*
-		if (locatorType.equals("ID"))
-			elements = driver.findElements(By.id(locator));
-		else if (locatorType.equals("XPATH"))
-			elements = driver.findElements(By.xpath(locator));
-		// other locators to be added later
-*/
+
 		if (locatorType.equals("ID"))
 			elements = driver.findElements(By.id(locator));
 		else if (locatorType.equals("XPATH"))
@@ -134,59 +88,16 @@ public class SeleniumUtilities {
 			elements = driver.findElements(By.partialLinkText(locator));
 		else if (locatorType.equals("TAG"))
 			elements = driver.findElements(By.tagName(locator));		
-			
+
 		return elements;
 	}
-	
+
 	/**
-	 * Find a List of Selenium elements using either xpath or id locators by concatenating  
-	 * the first part of an xpath with an index into a tag array and then with the second part
-	 * of the xpath.
-	 * @return List <WebElement>
-	 */
-	public List <WebElement> getElements(String str1, int i, String str2, String locatorType) {
-		List <WebElement> elements = null;
-		String locator = str1 + i + str2;
-		
-		elements = getElements(locator, locatorType);
-/*		
-		if (locatorType.equals("ID"))
-			elements = driver.findElements(By.id(locator));
-		else if (locatorType.equals("XPATH"))
-			elements = driver.findElements(By.xpath(locator));
-		// other locators to be added later
-*/
-		return elements;
-	}
-	
-	/**
-	 * Find a List of Selenium elements using either xpath or id locators by concatenating  
-	 * the first part of an xpath with an index into a tag array, then with the middle part
-	 * of the xpath, then with another index into a tag array and finally with the last part
-	 * of the xpath.
-	 * @return List <WebElement>
-	 */
-	public List <WebElement> getElements(String str1, int i, String str2, int j, String str3, String locatorType) {
-		List <WebElement> elements = null;
-		String locator = str1 + i + str2 + j + str3;
-		
-		elements = getElements(locator, locatorType);
-		
-/*		
-		if (locatorType.equals("ID"))
-			elements = driver.findElements(By.id(locator));
-		else if (locatorType.equals("XPATH"))
-			elements = driver.findElements(By.xpath(locator));
-		// other locators to be added later
-*/
-		return elements;
-	}
-	
-	// OVERLOADING click   ********************************************
-	
-	/**
-	 * Click on an element 
+	 * Click on an element given its locator.  This method is overloaded. 
 	 * 
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @throws	Exception	let startHere() method catch it
 	 */
 	public void clickElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -196,24 +107,22 @@ public class SeleniumUtilities {
 	}
 
 	/**
-	 * Click on an element by concatenating the first part of an xpath with an index 
-	 * into a tag array and then with the second part of the xpath.
+	 * Click on an element given its WebElement.  This method is overloaded. 
 	 * 
+	 * @param  	element		the WebElement to be clicked
+	 * @throws	Exception	let startHere() method catch it
 	 */
-	public void clickElement(String str1, int i, String str2, String locatorType) throws Exception {
-		WebElement element = null;
-		String locator = str1 + i + str2;
-		
-		element = getElement(locator, locatorType);
+	public void clickElement(WebElement element) throws Exception {
 		element.click();
 	}
-	
-	
-	// *******************************************
-	
+
 	/**
-	 * Send data to an element
+	 * Send data to an element.
 	 * 
+	 * @param  	data			string to be inserted into the web element
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @throws	Exception	let startHere() method catch it
 	 */
 	public void sendKeysElement(String data, String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -223,8 +132,11 @@ public class SeleniumUtilities {
 	}
 
 	/**
-	 * clear an element
+	 * Clear an element.
 	 * 
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @throws	Exception	let startHere() method catch it
 	 */
 	public void clearElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -232,57 +144,54 @@ public class SeleniumUtilities {
 		element = getElement(locator, locatorType);
 		element.clear();
 	}
-	
+
 	/**
-	 * Determine if an element is in the DOM.
+	 * Determine if an element is in the DOM.  
 	 * It ultimately calls findElements which returns an empty List if the element is not in the DOM.
-	 * I could have used findElement surrounded by a try=catch but I prefer not to handle unnecessary exceptions.
+	 * I could have used findElement surrounded by a try-catch but I prefer not to handle unnecessary exceptions.
 	 * 
+	 * @param  	locator		string containing the locator	
+	 * @param  	locatorType	string containing the type of locator
+	 * @return				boolean true if the element is in the DOM, false if it is not
 	 */
-	public boolean isElementPresent(String locator, String type) {
-	   List<WebElement> elementList = getElements(locator, type);
-		   
-	   int size = elementList.size();
-		   
-	   if (size > 0) {
-	      return true;
-	   }
-	   else {
-	      return false;
-	   }
+	public boolean isElementPresent(String locator, String locatorType) {
+		List<WebElement> elementList = getElements(locator, locatorType);
+		int size = elementList.size();
+
+		if (size > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	
-	
-	
-	
-	// This is used by the Review Your Trip and Payment pages to compare their prices with the 
-	// price on the Search Results page.
-	// The prices on the Review Your Trip and Payment pages are exact prices, meaning they 
-	// including cents, while the price on the earlier Search Results page had been rounded up.
-	// Orbitz always seems to round up, not round off.  For example, $123.01 becomes $124
-	// without a decimal point.  
-	// Strategy:  Round up the price, ignore the '$' sign and drop off the decimal point.
-	//            Then comparing it to the Search Results price is straightforward.
+
 	/**
-	 * Verify whether 2 prices are equivalent.
+	 * Explicit Wait for a list of WebElements.
 	 * 
-	 */
-	public void verifyPrices(String sPriceField, String sSavedPrice) throws Exception {
-		NumberFormat format = NumberFormat.getCurrencyInstance(); // handles the $ sign
+	 * @param  	locator		a By object containing the locator of the web elements	
+	 * @param  	timeout		duration of the explicit wait in seconds
+	 * @return 				a List of WebElements if they become present within the alloted time
+	 */	
+	public List <WebElement> waitForElements(By locator, int timeout) {
+		List <WebElement> elements = null;
+		try {
+			log.info("waitForElements: Waiting for max " + timeout + " seconds for elements to become available");
 
-		WebElement element = getElement(sPriceField, "XPATH");
-		Number value = format.parse(element.getText().trim());
-		BigDecimal big = new BigDecimal(value.toString());
-		big = big.setScale(0, RoundingMode.UP);
+			// mixing implicit and explicit waits is not a good idea.  The resulting wait time is unpredictable.
+			// Better to disable the implicit wait, create an explicit wait (which is customized to a specific element)
+			// and then restore the previous implicit wait time.
+			driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);  // disable implicit wait
 
-		// sSavedPrice (from the Search Results page) still has a $ sign which we need 
-		// to ignore, hence the .substring(1)
-		if (big.toString().equals(sSavedPrice.substring(1)))
-			log.info("verifyPrices()  Prices match.");
-		else
-			log.info("verifyPrices()  Prices do NOT match");
-		
-		log.debug("Price on Search Results page = " + sSavedPrice + " Price on the current page = " + big.intValue());
+			WebDriverWait wait = new WebDriverWait(driver, timeout);
+			elements = wait.until(
+					ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+
+			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);  // restore implicit wait
+			log.debug("waitForElements: Elements appeared on the web page");
+		} catch(Exception e) {
+			log.debug("waitForElements: Elements did not appear on the web page");
+		}
+		return elements;
 	}
 }

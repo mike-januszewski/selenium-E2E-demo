@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<Property name="basePath">./logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="File" fileName="${basePath}/flight.log" filePattern="${basePath}/flight-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{2} -%msg%n"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="20 KB"/>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingFile>
+		<Console name="Console">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{2} -%msg%n"/>
+		</Console>
+	</Appenders>
+	<Loggers>
+	        <Root level="trace">
+			<AppenderRef ref="File"/>
+		</Root>
+	</Loggers>
+</Configuration>
