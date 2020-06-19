@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Base class of frequently used general purpose methods that other classes inherit from.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(SeleniumUtilities.class.getName());  // Log4j2
@@ -25,7 +25,7 @@ public class SeleniumUtilities {
 	/**
 	 * Constructor for the Review Your Trip page class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public SeleniumUtilities(WebDriver driver) {
 		this.driver = driver;
@@ -34,10 +34,10 @@ public class SeleniumUtilities {
 	/**
 	 * Find a Selenium web element using any type of locator.
 	 * 
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @return 				the WebElement found 
-	 * @throws	Exception	let startHere() method catch it
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @return                the WebElement found 
+	 * @throws  Exception     let startHere() method catch it
 	 */
 	public WebElement getElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -65,9 +65,9 @@ public class SeleniumUtilities {
 	/**
 	 * Find a List of Selenium web elements (plural!) using any type of locator.
 	 * 
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @return 				the List of WebElements (plural!) found
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @return                the List of WebElements found
 	 */
 	public List <WebElement> getElements(String locator, String locatorType) {
 		List <WebElement> elements = null;
@@ -95,9 +95,9 @@ public class SeleniumUtilities {
 	/**
 	 * Click on an element given its locator.  This method is overloaded. 
 	 * 
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @throws	Exception	let startHere() method catch it
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @throws  Exception     let startHere() method catch it
 	 */
 	public void clickElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -109,8 +109,8 @@ public class SeleniumUtilities {
 	/**
 	 * Click on an element given its WebElement.  This method is overloaded. 
 	 * 
-	 * @param  	element		the WebElement to be clicked
-	 * @throws	Exception	let startHere() method catch it
+	 * @param   element     the WebElement to be clicked
+	 * @throws  Exception   let startHere() method catch it
 	 */
 	public void clickElement(WebElement element) throws Exception {
 		element.click();
@@ -119,10 +119,10 @@ public class SeleniumUtilities {
 	/**
 	 * Send data to an element.
 	 * 
-	 * @param  	data			string to be inserted into the web element
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @throws	Exception	let startHere() method catch it
+	 * @param   data          string to be inserted into the web element
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @throws  Exception     let startHere() method catch it
 	 */
 	public void sendKeysElement(String data, String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -134,9 +134,9 @@ public class SeleniumUtilities {
 	/**
 	 * Clear an element.
 	 * 
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @throws	Exception	let startHere() method catch it
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @throws  Exception     let startHere() method catch it
 	 */
 	public void clearElement(String locator, String locatorType) throws Exception {
 		WebElement element = null;
@@ -150,9 +150,9 @@ public class SeleniumUtilities {
 	 * It ultimately calls findElements which returns an empty List if the element is not in the DOM.
 	 * I could have used findElement surrounded by a try-catch but I prefer not to handle unnecessary exceptions.
 	 * 
-	 * @param  	locator		string containing the locator	
-	 * @param  	locatorType	string containing the type of locator
-	 * @return				boolean true if the element is in the DOM, false if it is not
+	 * @param   locator       string containing the locator	
+	 * @param   locatorType   string containing the type of locator
+	 * @return                boolean true if the element is in the DOM, false if it is not
 	 */
 	public boolean isElementPresent(String locator, String locatorType) {
 		List<WebElement> elementList = getElements(locator, locatorType);
@@ -169,9 +169,9 @@ public class SeleniumUtilities {
 	/**
 	 * Explicit Wait for a list of WebElements.
 	 * 
-	 * @param  	locator		a By object containing the locator of the web elements	
-	 * @param  	timeout		duration of the explicit wait in seconds
-	 * @return 				a List of WebElements if they become present within the alloted time
+	 * @param   locator   a By object containing the locator of the web elements	
+	 * @param   timeout   duration of the explicit wait in seconds
+	 * @return            a List of WebElements if they become present within the alloted time
 	 */	
 	public List <WebElement> waitForElements(By locator, int timeout) {
 		List <WebElement> elements = null;
