@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Perform verifications on the Review Your Trip web page where the trip's itinerary and cost are displayed.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class ReviewYourTripPage extends SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(ReviewYourTripPage.class.getName());  // Log4j2
@@ -27,7 +27,7 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	/**
 	 * Constructor for the Review Your Trip page class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public ReviewYourTripPage(WebDriver driver) {
 		super(driver);
@@ -43,9 +43,9 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	 * to unnecessarily slow down my program.  An explicit wait time is customized to a specific element.
 	 * Fulfills Task 6a.
 	 * 
-	 * @param  	sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param  	sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private void verifyAirportCodes(String[] sDepartingAirports, String[] sArrivalAirports) throws Exception {
 		// explicitly wait up to 60 seconds for all departure and arrival flight code elements to become present
@@ -69,8 +69,8 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	 * the Search Results page.
 	 * Fulfills Task 6b.
 	 * 
-	 * @param  	searchResultsPage	SearchResultsPage object used to access its getter methods
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   searchResultsPage   SearchResultsPage object used to access its getter methods
+	 * @throws  Exception           let the startHere() method catch it
 	 */
 	private void verifyPrice(SearchResultsPage searchResultsPage) throws Exception {
 		String sPriceSearchResults = searchResultsPage.getSavedPrice();  // the price of the selected flights from the Search Results page
@@ -91,8 +91,8 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	 * the Search Results pages.
 	 * Fulfills Tasks 6c and 6d.
 	 * 
-	 * @param  	searchResultsPage	SearchResultsPage object used to access its getter methods
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   searchResultsPage   SearchResultsPage object used to access its getter methods
+	 * @throws  Exception           let the startHere() method catch it
 	 */
 	private void verifyFlightNumbers(SearchResultsPage searchResultsPage) throws Exception {
 		// Determine the total number of flights from the Search Results page
@@ -135,7 +135,7 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	/**
 	 * Click the "Continue Booking" button.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */
 	private void clickContinueBookingButton() throws Exception {	
 		clickElement(continueBookingButton, "ID");
@@ -146,10 +146,10 @@ public class ReviewYourTripPage extends SeleniumUtilities {
 	/**
 	 * Driver for the Review Your Trip page tests.  
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @param	searchResultsPage  	SearchResultsPage object used to access its getter methods
-	 * @return						boolean true for success. false indicates an exception was thrown
+	 * @param  sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param  sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @param  searchResultsPage    SearchResultsPage object used to access its getter methods
+	 * @return                      boolean true for success. false indicates an exception was thrown
 	 */
 	public boolean startHere(String[] sDepartingAirports, String[] sArrivalAirports, SearchResultsPage searchResultsPage) {
 		// process all exceptions for this page here
