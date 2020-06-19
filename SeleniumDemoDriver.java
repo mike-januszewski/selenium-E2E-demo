@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
  * The startHere methods in each page class allow you to visualize each step of the scenario.
  * In this case there are 5 web pages of the Orbitz web app that will be tested.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class SeleniumDemoDriver {
 	private static final Logger log = LogManager.getLogger(SeleniumDemoDriver.class.getName());  // Log4j2
@@ -156,7 +156,7 @@ public class SeleniumDemoDriver {
 	 * This method needs to be static so main() can call it.
 	 * Fulfills Task 8.
 	 * 
-	 * @param	requestedBrowserName		string containing a browser name
+	 * @param  requestedBrowserName   string containing a browser name
 	 */	
 	private static void openBrowser(String requestedBrowserName) {
 		// instantiate a new browser driver
