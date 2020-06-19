@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Select a qualifying round trip flight.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class SearchResultsPage extends SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(SearchResultsPage.class.getName());  // Log4j2
@@ -59,7 +59,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Constructor for the Search Results page class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public SearchResultsPage(WebDriver driver) {
 		super(driver);
@@ -70,7 +70,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * If that option is not already selected then click it to filter results that way.
 	 * Fulfills Task 4a.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */
 	private void selectSortByFilterOption() throws Exception {
 		WebElement priceMenuElement = getElement(selectedPriceField, "ID");
@@ -94,7 +94,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * Compare successive numerical prices (comparing strings won't work).
 	 * Fulfills Task 4b.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */
 	private void verifyPricesAreInLowestOrder() throws Exception {
 		// explicit wait up to 60 seconds because it takes a relatively long time for the 
@@ -135,10 +135,10 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * to the Search Page then verification is confirmed.
 	 * Fulfills Task 4c.
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search page
-	 * @param 	searchPage			SearchPage object used to access its getter methods
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search page
+	 * @param   searchPage           SearchPage object used to access its getter methods
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private void verifyFlightData(String[] sDepartingAirports, String[] sArrivalAirports, SearchPage searchPage) throws Exception {
 		// verify departing airports
@@ -179,10 +179,10 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * Select qualifying flights for all 3 legs of the trip.  
 	 * Tasks 5 and 11 describe what a qualifying flight is. 
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search page
-	 * @return						the index into the flight array for the Leg 3 portion of the trip
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search page
+	 * @return                       the index into the flight array for the Leg 3 portion of the trip
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private int selectQualifyingFlight(String[] sDepartingAirports, String[] sArrivalAirports) throws Exception {
 		int flightIndex;  // array index of the first qualifying flight
@@ -204,7 +204,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 			randomSelectNewAirports(sDepartingAirports, sArrivalAirports); 
 		}
 
-		// For some reason Orbitz is sending me an interstitial page which seems to be 
+		// For some reason Orbitz is sending an interstitial page which seems to be 
 		// refreshing the DOM and therefore causing stale elements.  So I need to call 
 		// getElements again to get a refreshed list of airline name elements.
 		allAirlineNamesList = getElements(allAirlineNames, "XPATH");
@@ -395,9 +395,9 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * Enter the new codes into the airport fields and try another search.  Repeat until flight results are obtained.
 	 * Fulfills Task 11b.
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private void randomSelectNewAirports(String[] sDepartingAirports, String[] sArrivalAirports) throws Exception {
 		List <WebElement> allAirlineNamesList = null;
@@ -453,8 +453,8 @@ public class SearchResultsPage extends SeleniumUtilities {
 	 * Open the "Review Your Trip" page in a new window.  Selenium needs to shift its focus to this new window.
 	 * This is similar to dealing with IFrames.  Precede this by finish choosing the qualifying Leg 3 flight.
 	 * 
-	 * @param leg3flightIndex	the index to the Select button on the Leg 3 Results page
-	 * @throws Exception			let the startHere() method catch it
+	 * @param   leg3flightIndex   the index to the Select button on the Leg 3 Results page
+	 * @throws  Exception         let the startHere() method catch it
 	 */
 	private void clickAndOpenReviewPageInNewWindow(int leg3flightIndex) throws Exception {	
 		// Prepare to switch window focus
@@ -491,7 +491,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Getter method for the cost of the trip.
 	 * 
-	 * @return		string containing the price
+	 * @return	string containing the price
 	 */
 	public String getSavedPrice() {
 		return sPrice;
@@ -500,7 +500,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Getter method for the number of flights per leg.
 	 * 
-	 * @return		array with the number of flights per leg.  This is directly related to the number of stops per leg.
+	 * @return	array with the number of flights per leg.  This is directly related to the number of stops per leg.
 	 */
 	public int[] getSavedNumberFlightsPerLeg() {
 		return numberFlightsPerLeg;
@@ -509,7 +509,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Getter method for the flight numbers.
 	 * 
-	 * @return		arrayList containing the flight numbers
+	 * @return	arrayList containing the flight numbers
 	 */	
 	public ArrayList<String> getSavedFlightNumbers() {
 		return flightNumbersArray;
@@ -518,7 +518,7 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Getter method for the parent window handle.  Used when switching focus back to a previous window.
 	 * 
-	 * @return		string containing the parent window handle
+	 * @return	string containing the parent window handle
 	 */		
 	public String getParentHandle() {
 		return parentHandle;
@@ -527,10 +527,10 @@ public class SearchResultsPage extends SeleniumUtilities {
 	/**
 	 * Driver for the Search Results page tests.  
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search page
-	 * @param	searchPage  			SearchPage object used to access its getter methods
-	 * @return						boolean true for success. false indicates an exception was thrown
+	 * @param  sDepartingAirports   string array of departing airport codes from the Search page
+	 * @param  sArrivalAirports     string array of arriving airport codes from the Search page
+	 * @param  searchPage           SearchPage object used to access its getter methods
+	 * @return                      boolean true for success. false indicates an exception was thrown
 	 */
 	public boolean startHere(String[] sDepartingAirports, String[] sArrivalAirports, SearchPage searchPage) {
 		// process all exceptions for this page here
