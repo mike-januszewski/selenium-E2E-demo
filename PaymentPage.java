@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Perform verifications on the Payments web page where the trip's final itinerary and costs are displayed.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class PaymentPage extends SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(PaymentPage.class.getName());  // Log4j2
@@ -24,7 +24,7 @@ public class PaymentPage extends SeleniumUtilities {
 	/**
 	 * Constructor for the Payment page class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public PaymentPage(WebDriver driver) {
 		super(driver);
@@ -35,9 +35,9 @@ public class PaymentPage extends SeleniumUtilities {
 	 * from the Search Results page.  There are always 3 pairs of departing/arriving airports.
 	 * Fulfills Task 7a.
 	 * 
-	 * @param  sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param  sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @throws Exception				let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private void verifyAirportCodes(String[] sDepartingAirports, String[] sArrivalAirports) throws Exception {
 		String[] sAirportCodes = new String[6];  // 3 pairs of airport codes means a total of 6 codes
@@ -74,8 +74,8 @@ public class PaymentPage extends SeleniumUtilities {
 	 * the Search Results page.
 	 * Fulfills Task 7b.
 	 * 
-	 * @param  searchResultsPage		SearchResultsPage object used to access its getter methods
-	 * @throws Exception				let the startHere() method catch it
+	 * @param   searchResultsPage   SearchResultsPage object used to access its getter methods
+	 * @throws  Exception           let the startHere() method catch it
 	 */
 	private void verifyPrice(SearchResultsPage searchResultsPage) throws Exception {
 		String sPriceSearchResults = searchResultsPage.getSavedPrice();  // the price of the selected flights from the Search Results page
@@ -96,8 +96,8 @@ public class PaymentPage extends SeleniumUtilities {
 	 * the Search Results pages.
 	 * Fulfills Tasks 7c and 7d.
 	 * 
-	 * @param  searchResultsPage	 SearchResultsPage object used to access its getter methods
-	 * @throws Exception			 let the startHere() method catch it
+	 * @param   searchResultsPage   SearchResultsPage object used to access its getter methods
+	 * @throws  Exception           let the startHere() method catch it
 	 */
 	private void verifyFlightNumbers(SearchResultsPage searchResultsPage) throws Exception {
 		// Determine the total number of flights from the Search Results page
@@ -137,10 +137,10 @@ public class PaymentPage extends SeleniumUtilities {
 	/**
 	 * Driver for the Payment page tests.  
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @param	searchResultsPage  	SearchResultsPage object used to access its getter methods
-	 * @return						boolean true for success. false indicates an exception was thrown
+	 * @param  sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param  sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @param  searchResultsPage    SearchResultsPage object used to access its getter methods
+	 * @return                      boolean true for success. false indicates an exception was thrown
 	 */
 	public boolean startHere(String[] sDepartingAirports, String[] sArrivalAirports, SearchResultsPage searchResultsPage) {
 		// process all exceptions for this page here
