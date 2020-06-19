@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Input flight data into the Search Flights page.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class SearchPage extends SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(SearchPage.class.getName());  // Log4j2
@@ -44,7 +44,7 @@ public class SearchPage extends SeleniumUtilities {
 	/**
 	 * Constructor for the Search page class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public SearchPage(WebDriver driver) {
 		super(driver);
@@ -54,7 +54,7 @@ public class SearchPage extends SeleniumUtilities {
 	 * Click the Multi-city radio button.
 	 * Helps fulfill Task 2.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */
 	private void clickMultiCityRadioButton() throws Exception {
 		clickElement(multiCityRadioButton, "ID");
@@ -85,10 +85,10 @@ public class SearchPage extends SeleniumUtilities {
 	 * Determine if clearing these fields is necessary prior to inputting the codes. 
 	 * Fulfills Task 3c.
 	 * 
-	 * @param	sDepartingAirports	string array of departing airport codes from the Search Results page
-	 * @param	sArrivalAirports		string array of arriving airport codes from the Search Results page
-	 * @param	bClearFlightData		boolean whether to clear the previous airport fields after switching browsers
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   sDepartingAirports   string array of departing airport codes from the Search Results page
+	 * @param   sArrivalAirports     string array of arriving airport codes from the Search Results page
+	 * @param   bClearFlightData     boolean whether to clear the previous airport fields after switching browsers
+	 * @throws  Exception            let the startHere() method catch it
 	 */
 	private void enterDepartureAndArrivalCodes(String[] sDepartingAirports, String[] sArrivalAirports, boolean bClearFlightData) throws Exception {
 		/*
@@ -125,7 +125,7 @@ public class SearchPage extends SeleniumUtilities {
 	 * I can take advantage of that by using the select class for a more robust solution.
 	 * Fulfills Task 3a.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */
 	private void selectAdultAndChildDropdown() throws Exception {
 		WebElement element = getElement(numberOfAdults, "XPATH");
@@ -144,8 +144,8 @@ public class SearchPage extends SeleniumUtilities {
 	 * Insert them into the Search page.
 	 * Fulfills Task 3b and 3d.
 	 * 
-	 * @param	bClearDateFields		boolean whether to clear the previous date fields after switching browsers
-	 * @throws	Exception			let the startHere() method catch it
+	 * @param   bClearDateFields   boolean whether to clear the previous date fields after switching browsers
+	 * @throws  Exception          let the startHere() method catch it
 	 */	
 	private void enterDepartureDates(boolean bClearDateFields) throws Exception {
 		// if the browser is not changing then clear all departure dates, otherwise
@@ -198,7 +198,7 @@ public class SearchPage extends SeleniumUtilities {
 	 * Land on the Search Results page.
 	 * Helps fulfill Task 4.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */	
 	private void clickSearchButton() throws Exception {
 		clickElement(searchButton, "XPATH");
@@ -209,7 +209,7 @@ public class SearchPage extends SeleniumUtilities {
 	/**
 	 * Getter method for departure dates (setters are not needed).
 	 * 
-	 * @return		string array of departure dates
+	 * @return	string array of departure dates
 	 */
 	public String[] getFormattedDepartureDate() {
 		return sFormattedDepartureDate;
@@ -218,10 +218,10 @@ public class SearchPage extends SeleniumUtilities {
 	/**
 	 * Driver for the Search Flights page tests.  
 	 * 
-	 * @param	sDepartingAirports			string array of departing airport codes from the Search Results page
-	 * @param	sArrivalAirports				string array of arriving airport codes from the Search Results page
-	 * @param	bClearFlightDataAndDates		boolean whether to clear the previous airport and date fields after switching browsers
-	 * @return								boolean true for success. false indicates an exception was thrown
+	 * @param  sDepartingAirports         string array of departing airport codes from the Search Results page
+	 * @param  sArrivalAirports           string array of arriving airport codes from the Search Results page
+	 * @param  bClearFlightDataAndDates   boolean whether to clear the previous airport and date fields after switching browsers
+	 * @return                            boolean true for success. false indicates an exception was thrown
 	 */
 	public boolean startHere(String[] sDepartingAirports, String[] sArrivalAirports, boolean bClearFlightDataAndDates) {
 		// process all exceptions for this page here
