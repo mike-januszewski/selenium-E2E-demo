@@ -40,7 +40,7 @@ public class HomePage extends SeleniumUtilities {
 	/**
 	 * Driver for the Home page tests.  
 	 * 
-	 * @return			boolean true for success. false indicates an exception was thrown
+	 * @return		boolean true for success. false indicates an exception was thrown
 	 */
 	public boolean startHere() {
 		// process all exceptions for this page here
