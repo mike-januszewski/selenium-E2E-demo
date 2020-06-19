@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Enable clicking the Flights tab on the Orbitz home page.
  * 
- * @author Michael Januszewski
+ * @author  Michael Januszewski
  */
 public class HomePage extends SeleniumUtilities {
 	private static final Logger log = LogManager.getLogger(HomePage.class.getName());  // Log4j2
@@ -19,7 +19,7 @@ public class HomePage extends SeleniumUtilities {
 	/**
 	 * Constructor for the HomePage class.  It calls the base class constructor (SeleniumUtilities).
 	 * 
-	 * @param  driver	WebDriver object for the browser driver which implements the WebDriver interface
+	 * @param  driver   WebDriver object for the browser driver which implements the WebDriver interface
 	 */
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -29,7 +29,7 @@ public class HomePage extends SeleniumUtilities {
 	 * Click the Flights tab on the Home page.  This opens the Search Flights page.
 	 * Fulfills Task 2.
 	 * 
-	 * @throws	Exception	let the startHere() method catch it
+	 * @throws  Exception   let the startHere() method catch it
 	 */	
 	private void clickFlightsTab() throws Exception {
 		clickElement(flightLink, "ID");
